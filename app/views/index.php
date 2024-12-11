@@ -52,7 +52,7 @@
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="contacts">Contacts</a>
                       </li>
-                    </ul><a class="button button-white button-sm" href="#">book now</a>
+                    </ul><a class="button button-white button-sm" href="<?php echo site_url('users/create'); ?>">book now</a>
                   </div>
                 </div><a class="button button-white button-sm" href="reserve">book now</a>
               </div>

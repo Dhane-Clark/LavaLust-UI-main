@@ -63,7 +63,7 @@ $database['main'] = array(
     'port'		=> '3306',
     'username'	=> 'root',
     'password'	=> '',
-    'database'	=> 'web_proj',
+    'database'	=> 'reservationsystem',
     'charset'	=> 'utf8mb4',
     'dbprefix'	=> '',
 );

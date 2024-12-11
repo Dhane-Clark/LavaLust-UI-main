@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Page</title>
+    <title>Appointment Reservation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,48 +72,42 @@
 <body>
 
 <div class="reservation-form">
-    <h2>Make a Reservation</h2>
-    <form method="POST" action="<?php echo site_url('reserve'); ?>">
-        <!-- Attendee Details -->
-        <label for="name">Attendee Name:</label>
-        <input type="text" id="name" name="name" required placeholder="Enter attendee name">
+    <h2>Make an Appointment Reservation</h2>
+    <form method="POST" action="<?php echo site_url(url: 'reserve'); ?>">
+        <!-- User Details -->
+        <label for="user_id">User ID:</label>
+        <input type="number" id="user_id" name="user_id" required placeholder="Enter your user ID">
 
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+        <!-- Service Type Selection -->
+        <label for="service_type">Service Type:</label>
+        <select id="service_type" name="service_type" required>
+            <option value="" disabled selected>Select a service</option>
+            <!-- Service options can be populated dynamically from the database -->
+            <option value="1">Service 1</option>
+            <option value="2">Service 2</option>
+            <option value="3">Service 3</option>
         </select>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required placeholder="Enter age">
+        <!-- Appointment Details -->
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
 
-        <!-- Reservation Details -->
-        <label for="place">Select Place:</label>
-        <select id="place" name="place_id" required>
-            <option value="" disabled selected>Select a place</option>
-            <!-- Dynamic place options will go here from the database -->
-            <option value="1">Place 1</option>
-            <option value="2">Place 2</option>
-            <option value="3">Place 3</option>
+        <label for="appointment_time">Appointment Time:</label>
+        <input type="time" id="appointment_time" name="appointment_time" required>
+
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" name="duration" required placeholder="Enter duration in minutes">
+
+        <!-- Appointment Status -->
+        <label for="status">Appointment Status:</label>
+        <select id="status" name="status" required>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
         </select>
 
-        <label for="attendees">Number of Attendees:</label>
-        <input type="number" id="attendees" name="number_of_attendees" required placeholder="Enter number of attendees">
-
-        <label for="reservation_datetime">Reservation Date & Time:</label>
-        <input type="datetime-local" id="reservation_datetime" name="reservation_datetime" required>
-
-        <label for="payment_status">Payment Status:</label>
-        <select id="payment_status" name="payment_status" required>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-        </select>
-
-        <label for="payment_receipt_email">Payment Receipt Email:</label>
-        <input type="email" id="payment_receipt_email" name="payment_receipt_email" required placeholder="Enter email for receipt">
-
-        <button type="submit">Submit Reservation</button>
+        <button type="submit">Submit Appointment</button>
     </form>
 
     <!-- Back Button -->

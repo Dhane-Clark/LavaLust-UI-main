@@ -14,20 +14,20 @@ class UserAuth extends Controller {
         $this->call->view('auth/UserLogin');
     }
     public function attemptLogin() {
-        if($this->form_validation->submitted()) {
-            $email = $this->io->post('email');
-			$password = $this->io->post('password');
-            $data = $this->lauth->login($email, $password);
-            if(empty($data)) {
-				$this->session->set_flashdata(['is_invalid' => 'is-invalid']);
-                $this->session->set_flashdata(['err_message' => 'These credentials do not match our records.']);
-			} else {
-				$this->lauth->set_logged_in($data);
-			}
-            redirect('/userLog');
-        } else {
-            $this->call->view('auth/UserLogin');
-        }
+            if($this->form_validation->submitted()) {
+                $email = $this->io->post('email');
+                $password = $this->io->post('password');
+                $data = $this->lauth->login($email, $password);
+                if(empty($data)) {
+                    $this->session->set_flashdata(['is_invalid' => 'is-invalid']);
+                    $this->session->set_flashdata(['err_message' => 'These credentials do not match our records.']);
+                } else {
+                    $this->lauth->set_logged_in($data);
+                }
+                redirect('/userLog');
+            } else {
+                $this->call->view('auth/UserLogin');
+            }
     }
 
     public function register() {
@@ -60,10 +60,10 @@ class UserAuth extends Controller {
             $this->form_validation
                     ->name('email')
                     ->required()
-                    ->is_unique('users', 'email', $email, 'Email was already taken.')
+                    ->is_unique('userss', 'email', $email, 'Email was already taken.')
                 ->name('username')
                     ->required()
-                    ->is_unique('users', 'username', $username, 'Username was already taken.')
+                    ->is_unique('userss', 'username', $username, 'Username was already taken.')
                     ->min_length(5, 'Username name must not be less than 5 characters.')
                     ->max_length(20, 'Username name must not be more than 20 characters.')
                     ->alpha_numeric_dash('Special characters are not allowed in username.')

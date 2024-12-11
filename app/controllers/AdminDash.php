@@ -6,15 +6,17 @@ class AdminDash extends Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('admin_id')) {
-            redirect('/adminLog'); // Redirect to login if not logged in
-        }
+        //$this->call->view('adminDash');
+        
     }
 
     public function index()
     {
-        $data['title'] = 'Admin Dashboard';
-        $this->call->view('/adminDash', $data);
+        $this->call->model('Appointment_model'); // Load the Appointment model
+        $data['appointments'] = $this->Appointment_model->get_all_appointments();  // Get all appointments
+        //var_dump($this->Appointment_model->get_all_appointments());
+        //exit();
+        $this->call->view('adminDash', $data);  // Pass the data to the view
     }
 }
 

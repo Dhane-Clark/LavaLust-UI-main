@@ -42,12 +42,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |
 |
 */
-
-//Dashboard
 $router->post('/index', 'UserDash::index');
 $router->get('/about', 'UserDash::about');
 $router->get('/typography', 'UserDash::typography');
 $router->get('/contacts', 'UserDash::contacts');
+$router->get('/adminDash', 'AdminDash::index');
+
 
 //Admin
 $router->get('/admins', 'AdminAuth::login');
@@ -62,8 +62,45 @@ $router->get('/userRegister', 'UserAuth::register');
 $router->post('/userRegister','UserAuth::attemptRegister');
 
 $router->get('/reserve', 'ReserveCon::index');
-$router->post('/reserve', 'ReserveCon::submit_reservation');
+$router->post('/reserve', 'ReserveCon::store'); 
 
+    // User Routes
+$router->get('/users', 'UserController::index'); // List all users
+$router->get('/users/create', 'UserController::create'); // Show user creation form
+$router->post('/users', 'UserController::store'); // Store new user
+$router->get('/users/edit/(:num)', 'UserController::edit/$1'); // Edit user form
+$router->post('/users/update/(:num)', 'UserController::update/$1'); // Update user
+$router->get('/users/delete/(:num)', 'UserController::delete/$1'); // Delete user
+$router->get('/users/show/(:num)', 'UserController::show/$1'); // Show user details
+
+// Service Routes
+$router->get('/services', 'ServiceController::index'); // List all services
+$router->get('/services/create', 'ServiceController::create'); // Show service creation form
+$router->post('/services', 'ServiceController::store'); // Store new service
+$router->get('/services/edit/(:num)', 'ServiceController::edit/$1'); // Edit service form
+$router->post('/services/update/(:num)', 'ServiceController::update/$1'); // Update service
+$router->get('/services/delete/(:num)', 'ServiceController::delete/$1'); // Delete service
+$router->get('/services/show/(:num)', 'ServiceController:   :show/$1'); // Show service details
+
+// Appointment Routes
+$router->get('/appointments', 'AppointmentController::index'); // List all appointments
+$router->get('/appointments/create', 'AppointmentController::create'); // Show appointment creation form
+$router->post('/appointments', 'AppointmentController::store'); // Store new appointment
+$router->get('/appointments/edit/(:num)', 'AppointmentController::edit/$1'); // Edit appointment form
+$router->post('/appointments/update/(:num)', 'AppointmentController::update/$1'); // Update appointment
+$router->get('/appointments/delete/(:num)', 'AppointmentController::delete/$1'); // Delete appointment
+$router->get('/appointments/show/(:num)', 'AppointmentController::show/$1'); // Show appointment details
+
+// Payment Routes
+$router->get('/payments', 'PaymentController::index'); // List all payments
+$router->get('/payments/show/(:num)', 'PaymentController::show/$1'); // Show payment details
+
+// Feedback Routes
+$router->get('/feedback', 'FeedbackController::index'); // List all feedback
+$router->get('/feedback/create', 'FeedbackController::create'); // Show feedback form
+$router->post('/feedback', 'FeedbackController::store'); // Submit feedback
+$router->get('/feedback/show/(:num)', 'FeedbackController::show/$1'); // Show feedback details
+$router->get('/feedback/delete/(:num)', 'FeedbackController::delete/$1'); // Delete feedback
 
 
 

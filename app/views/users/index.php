@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointments List</title>
+    <title>Users List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +23,7 @@
             text-align: center;
             color: #333;
         }
-        a.add-appointment {
+        a.add-user {
             display: inline-block;
             margin-bottom: 20px;
             padding: 10px 15px;
@@ -33,7 +33,7 @@
             border-radius: 5px;
             text-align: center;
         }
-        a.add-appointment:hover {
+        a.add-user:hover {
             background-color: #218838;
         }
         table {
@@ -63,35 +63,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Appointments</h1>
-        <a href="<?php echo site_url('appointments/create'); ?>" class="add-appointment">Add New Appointment</a>
+        <h1>Users</h1>
+        <a href="<?php echo site_url('users/create'); ?>" class="add-user">Add New User</a>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>User Name</th>
-                    <th>Service Type</th>
-                    <th>Appointment Date</th>
-                    <th>Appointment Time</th>
-                    <th>Duration</th>
-                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($appointments as $appointment): ?>
+                <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?php echo $appointment['id']; ?></td>
-                        <td><?php echo $appointment['name']; ?></td>
-                        <td><?php echo $appointment['service_type']; ?></td>
-                        <td><?php echo $appointment['appointment_date']; ?></td>
-                        <td><?php echo $appointment['appointment_time']; ?></td>
-                        <td><?php echo $appointment['duration']; ?> minutes</td>
-                        <td><?php echo $appointment['status']; ?></td>
+                        <td><?php echo $user['id']; ?></td>
+                        <td><?php echo $user['name']; ?></td>
+                        <td><?php echo $user['email']; ?></td>
+                        <td><?php echo $user['phone']; ?></td>
                         <td>
-                            <a href="<?php echo site_url('appointments/show/' . $appointment['id']); ?>" class="action-link">View</a> |
-                            <a href="<?php echo site_url('appointments/edit/' . $appointment['id']); ?>" class="action-link">Edit</a> |
-                            <a href="<?php echo site_url('appointments/delete/' . $appointment['id']); ?>" class="action-link">Delete</a>
+                            <a href="<?php echo site_url('users/show/' . $user['id']); ?>" class="action-link">View</a> |
+                            <a href="<?php echo site_url('users/edit/' . $user['id']); ?>" class="action-link">Edit</a> |
+                            <a href="<?php echo site_url('users/delete/' . $user['id']); ?>" class="action-link">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

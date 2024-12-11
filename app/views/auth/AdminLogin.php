@@ -91,7 +91,7 @@
 <body>
     <div class="container">
         <h2>Admin Login</h2>
-        <form method="POST" action="<?php echo site_url('index'); ?>">
+        <form method="POST" action="<?php echo site_url('adminlogin'); ?>">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
