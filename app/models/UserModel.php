@@ -10,7 +10,7 @@ class UserModel extends Model {
     public function get_user_by_id($id) {
         return $this->db->table('Users')->where('id', $id)->get();
     }
-
+  
     public function add_user($data) {
         $bind = [
             'name' => $data['name'],
